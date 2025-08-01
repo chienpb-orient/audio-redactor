@@ -87,11 +87,6 @@ Each input contains:
 * Do **not** include words, phrases, or explanations
 * Only return valid JSON array of float timestamp ranges
 * Maintain **strict minimal output**
-
----
-
-Let me know if you want a separate variant that also handles **PII in customer service transcripts** or **HIPAA-style health information**.
-
 """
 
 def detect_sensitive_content(transcript_content):

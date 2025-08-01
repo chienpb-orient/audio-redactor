@@ -1,6 +1,4 @@
-# Audio Transcriber - Faster Whisper with AI Redaction
-
-A comprehensive audio transcription solution with AI-powered sensitive content detection and redaction. Features a modern Streamlit web interface, traditional GUI, and command-line options.
+# Audio Redactor
 
 ## 🆕 New Streamlit Web App with AI Redaction
 
@@ -29,18 +27,44 @@ A comprehensive audio transcription solution with AI-powered sensitive content d
 
 The modern web interface with AI-powered redaction:
 
-1. **Install dependencies:**
+1. **Get Google AI API Key**
+   - Go to [Google AI Studio](https://aistudio.google.com/)
+   - Create an API key for Gemini
+   - Copy your API key
+
+2. **Set Environment Variable**
+   ```bash
+   # Create .env file
+   echo "GOOGLE_GENERATIVE_AI_API_KEY=your_actual_api_key_here" > .env
+   echo "FFMPEG_PATH=path_to_your_ffmpeg_if_not_registered_globally" > .env
+
+   # Or set environment variable directly
+   export GOOGLE_GENERATIVE_AI_API_KEY="your_actual_api_key_here"
+   export FFMPEG_PATH="path_to_your_ffmpeg_if_not_registered_globally"
+   ```
+
+3. **Install FFmpeg**
+
+   **Windows:**
+   - Download from [FFmpeg.org](https://ffmpeg.org/download.html)
+   - Add to PATH
+
+   **macOS:**
+   ```bash
+   brew install ffmpeg
+   ```
+
+   **Linux:**
+   ```bash
+   sudo apt update && sudo apt install ffmpeg
+   ```
+
+4. **Install dependencies:**
    ```bash
    pip install -r requirements.txt
    ```
 
-2. **Set up environment:**
-   ```bash
-   # Create .env file with your Google AI API key
-   echo "GOOGLE_GENERATIVE_AI_API_KEY=your_api_key_here" > .env
-   ```
-
-3. **Run the Streamlit app:**
+5. **Run the Streamlit app:**
    ```bash
    # Option 1: Direct streamlit command
    streamlit run streamlit_app.py
@@ -49,7 +73,7 @@ The modern web interface with AI-powered redaction:
    python run_streamlit.py
    ```
 
-4. **Open your browser** to `http://localhost:8501` and start transcribing!
+6. **Open your browser** to `http://localhost:8501` and start redacting!
 
 **Features available in Streamlit app:**
 - 📁 Upload audio files directly in the browser
@@ -115,7 +139,6 @@ To customize which models are available:
        # "distil-large-v3",            # Uncomment to enable
    ]
    ```
-   ```
 
 **💡 Disk Space Savings:**
 - **Default config (tiny, base, small)**: ~357 MB total
@@ -147,40 +170,3 @@ Adjust based on your system and chosen models.
 - Try converting to WAV format if other formats fail
 - Ensure audio file is not corrupted
 - Check file permissions
-
-## 🔧 Setup for AI Redaction Features
-
-To use the sensitive content detection and redaction features:
-
-### 1. Get Google AI API Key
-1. Go to [Google AI Studio](https://aistudio.google.com/)
-2. Create an API key for Gemini
-3. Copy your API key
-
-### 2. Set Environment Variable
-```bash
-# Create .env file
-echo "GOOGLE_GENERATIVE_AI_API_KEY=your_actual_api_key_here" > .env
-echo "FFMPEG_PATH=path_to_your_ffmpeg_if_not_registered_globally" > .env
-
-# Or set environment variable directly
-export GOOGLE_GENERATIVE_AI_API_KEY="your_actual_api_key_here"
-export FFMPEG_PATH="path_to_your_ffmpeg_if_not_registered_globally"
-```
-
-### 3. Install FFmpeg
-The audio redaction requires FFmpeg:
-
-**Windows:**
-- Download from [FFmpeg.org](https://ffmpeg.org/download.html)
-- Add to PATH
-
-**macOS:**
-```bash
-brew install ffmpeg
-```
-
-**Linux:**
-```bash
-sudo apt update && sudo apt install ffmpeg
-```
